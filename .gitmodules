@@ -1,0 +1,9 @@
+[submodule "Engine/vendor/glfw"]
+	path = Engine/vendor/glfw
+	url = https://github.com/Anythingsoup01/glfw
+[submodule "Engine/vendor/Glad"]
+	path = Engine/vendor/Glad
+	url = https://github.com/Anythingsoup01/glad
+[submodule "Engine/vendor/glm"]
+	path = Engine/vendor/glm
+	url = https://github.com/Anythingsoup01/glm
