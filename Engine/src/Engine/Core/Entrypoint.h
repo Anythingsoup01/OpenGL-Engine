@@ -7,7 +7,7 @@ namespace Engine
 {
     int Main(int argc, char** argv)
     {
-        // Initialize Logger
+        Log::Init();
         while (g_ApplicationRunning)
         {
             Application* app = CreateApplication();

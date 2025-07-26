@@ -8,6 +8,7 @@ target_include_directories(Sandbox PRIVATE
     ${CMAKE_SOURCE_DIR}/Engine/src
     ${CMAKE_SOURCE_DIR}/Engine/vendor/glfw/include
     ${CMAKE_SOURCE_DIR}/Engine/vendor/Glad/include
+    ${CMAKE_SOURCE_DIR}/Engine/vendor/spdlog/include
 )
 
 target_link_libraries(Sandbox

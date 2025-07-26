@@ -14,6 +14,7 @@ project "Sandbox"
         "$(WORKSPACEDIR)/Engine/src",
         "$(WORKSPACEDIR)/Engine/vendor/glfw/include",
         "$(WORKSPACEDIR)/Engine/vendor/Glad/include",
+        "$(WORKSPACEDIR)/Engine/vendor/spdlog/include",
     }
 
     links

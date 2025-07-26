@@ -1,16 +1,29 @@
 set(SRCS
     src/Engine/Core/Application.cpp
+    src/Engine/Core/Window.cpp
     src/Engine/Core/Renderer/Shader.cpp
     src/Engine/Core/Renderer/Buffers.cpp
     src/Engine/Core/Renderer/VertexArray.cpp
     src/Engine/Core/Renderer/Renderer.cpp
+    src/Engine/Core/Log.cpp
+    src/epch.h
     src/Engine/Engine.h
+    src/Engine/Core/Event/Event.h
+    src/Engine/Core/Event/ApplicationEvent.h
+    src/Engine/Core/Event/KeyEvent.h
+    src/Engine/Core/Event/MouseEvent.h
+    src/Engine/Core/PlatformDetection.h
+    src/Engine/Core/MouseCodes.h
+    src/Engine/Core/KeyCodes.h
+    src/Engine/Core/Window.h
     src/Engine/Core/Renderer/Buffers.h
     src/Engine/Core/Renderer/Renderer.h
     src/Engine/Core/Renderer/VertexArray.h
     src/Engine/Core/Renderer/Shader.h
     src/Engine/Core/Application.h
     src/Engine/Core/Entrypoint.h
+    src/Engine/Core/Log.h
+    src/Engine/Core/Core.h
     vendor/glm/glm/detail/glm.cpp
     vendor/glm/glm/common.hpp
     vendor/glm/glm/mat4x4.hpp
@@ -294,11 +307,13 @@ set(SRCS
 add_library(Engine STATIC ${SRCS})
 set_property(TARGET Engine PROPERTY CXX_STANDARD 20)
 
+target_precompile_headers(Engine PUBLIC src/epch.h)
 target_include_directories(Engine PRIVATE
     src
     vendor/glm
     vendor/glfw/include
     vendor/Glad/include
+    vendor/spdlog/include
 )
 
 target_link_libraries(Engine
@@ -308,3 +323,15 @@ target_link_libraries(Engine
 )
 
 target_compile_definitions(Engine PUBLIC GDEFINES)
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
+target_compile_definitions(Engine
+PUBLIC
+    E_DEBUG
+)
+endif(CMAKE_BUILD_TYPE STREQUAL Debug)
+if(CMAKE_BUILD_TYPE STREQUAL Release)
+target_compile_definitions(Engine
+PUBLIC
+    E_RELEASE
+)
+endif(CMAKE_BUILD_TYPE STREQUAL Release)

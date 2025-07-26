@@ -63,4 +63,23 @@ namespace Engine
     {
         glUseProgram(0);
     }
+
+    uint32_t Shader::GetUniformFromMap(const char* uniformName)
+    {
+        if(m_UniformCache.find(uniformName) != m_UniformCache.end())
+            return m_UniformCache.at(uniformName);
+
+        uint32_t id = glGetUniformLocation(m_RendererID, uniformName);
+        m_UniformCache.emplace(std::pair<const char*, uint32_t>(uniformName, id));
+        return id;
+    }
+
+     void Shader::UniformVec1(const char* uniformName, float r)
+    {
+        glUniform1f(GetUniformFromMap(uniformName), r);
+    }
+    void Shader::UniformVec3(const char* uniformName, float r, float g, float b)
+    {
+        glUniform3f(GetUniformFromMap(uniformName), r, g, b);
+    }
 }

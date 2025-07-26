@@ -17,7 +17,13 @@ namespace Engine
 
         const uint32_t GetRendererID() const { return m_RendererID; }
 
+        uint32_t GetUniformFromMap(const char* uniformName);
+
+        void UniformVec1(const char* uniformName, float r);
+        void UniformVec3(const char* uniformName, float r, float g, float b);
+
     private:
         uint32_t m_RendererID;
+        std::unordered_map<const char*, uint32_t> m_UniformCache;
     };
 }
